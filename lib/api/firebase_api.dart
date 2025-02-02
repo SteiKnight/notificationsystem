@@ -16,6 +16,9 @@ class FirebaseApi {
 
     //print the token (normally you would send to server)
     print('FCM Token: $fCMToken');
+
+    //initialize push notifications
+    initPushNotifications();
   }
 
   //funtion to handle received messages
@@ -35,7 +38,7 @@ class FirebaseApi {
     //handle notification if the app was terminated and now openned
     FirebaseMessaging.instance.getInitialMessage().then(handleMessage);
 
-    //attach event listeners for when the notification opens the app
+    //attach event listeners for when the notification opens the app from the fg
     FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
   }
 }

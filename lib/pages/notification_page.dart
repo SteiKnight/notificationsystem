@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatelessWidget {
@@ -5,6 +6,8 @@ class NotificationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //get the notification message and display it
+    final message = ModalRoute.of(context)!.settings.arguments as RemoteMessage;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Notifications'),
@@ -12,7 +15,9 @@ class NotificationPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Text('Notifications Page'),
+          Text(message.notification!.title.toString()),
+          Text(message.notification!.body.toString()),
+          Text(message.data.toString()),
         ],
       ),
     );
